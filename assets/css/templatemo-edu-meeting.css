@@ -1757,7 +1757,7 @@ responsive
 
   section.contact-us #contact {
     margin-bottom: 30px;
-    margin-top: 70%;
+    margin-top: 100%;
   }
 
 }
@@ -1784,7 +1784,7 @@ responsive
     margin-bottom: 0px;
     width:95%;
     margin-left: 2.5%;
-    margin-top: 70%;
+    margin-top: 100%;
   }
 
   .services {
