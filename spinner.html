@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name Spinner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+        }
+        .spinner {
+            margin: 20px;
+            padding: 15px;
+            font-size: 2em;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="spinner" id="spinner">Click "Spin" to pick a name!</div>
+    <button onclick="spin()">Spin</button>
+</div>
+
+<script>
+    const names = ["John", "Mary", "Alex", "Sarah", "David"];
+
+    function spin() {
+        const randomIndex = Math.floor(Math.random() * names.length);
+        const selectedName = names[randomIndex];
+        document.getElementById('spinner').innerText = selectedName;
+    }
+</script>
+
+</body>
+</html>

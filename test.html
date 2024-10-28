@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Justice for Sport - Empowering Athletes</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --secondary: #2b4e8c;
+            --accent: #e53e3e;
+            --text: #2d3748;
+            --light: #f7fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: var(--primary);
+            color: white;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(26, 54, 93, 0.9), rgba(26, 54, 93, 0.9)), url('/api/placeholder/1920/1080');
+            background-size: cover;
+            color: white;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 50%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+            position: relative;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            position: relative;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: var(--accent);
+            bottom: -8px;
+            left: 0;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .section.active h2::after {
+            transform: scaleX(1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .stat-box {
+            background: var(--primary);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .stat-box:hover::before {
+            left: 100%;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-top: 4px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-top-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .card ul {
+            margin-top: 1rem;
+            color: var(--text);
+        }
+
+        .card ul li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .card ul li::before {
+            content: '•';
+            color: var(--accent);
+            font-weight: bold;
+            position: absolute;
+            left: -1rem;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: var(--accent);
+            transition: height 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card:hover::before {
+            height: 100%;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .service-card {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: scale(1.05);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            margin: 2rem 0;
+            position: relative;
+            width: 50%;
+            padding: 0 2rem;
+            opacity: 0;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .cta {
+            background: var(--accent);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta:hover {
+            background: #c53030;
+            transform: translateY(-2px);
+        }
+
+        .cta::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: -100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .cta:hover::after {
+            left: 100%;
+        }
+
+        .contact-section {
+            background: var(--light);
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+        }
+
+        .contact-card {
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">Justice for Sport</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#cases">Cases</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <button class="cta"><a href="https://complaints.justiceforsport.com/" style="color:white;" target="_blank">Get help now</a></button>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Empowering Athletes</h1>
+        <p>No more bad advice without consequences. We're fighting for justice in sports, one case at a time.</p>
+    </section>
+
+    <main class="content">
+        <section id="about" class="section">
+            <h2>About Us</h2>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">£1bn</div>
+                    <div>Lost Due to Bad Advice</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">100+</div>
+                    <div>Athletes Supported</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">85%</div>
+                    <div>Success Rate</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="section">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Legal Review</h3>
+                    <p>Comprehensive analysis of past and present cases for potential malpractice</p>
+                </div>
+                <div class="service-card">
+                    <h3>GDPR Compliance</h3>
+                    <p>Investigation of data protection breaches and privacy violations</p>
+                </div>
+                <div class="service-card">
+                    <h3>Financial Audit</h3>
+                    <p>Review of investment advice and financial management practices</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="cases" class="section">
+            <h2>Our Focus Areas</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <h3 class="text-xl font-bold mb-4 text-primary">Law Firm Malpractice</h3>
+                    <p class="mb-4">At Justice for Sport, we are committed to having the frustrations within the Sports World heard and not brushed under the rug. We leverage technology, media coverage, and strategic partnerships to create a fairer environment for sportspersons and disrupt the bad legal and advisory firms.</p>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Investigation of unfair billing practices</li>
+                        <li>Review of legal representation quality</li>
+                        <li>Assessment of conflict of interest cases</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3 class="text-xl font-bold mb-4 text-primary">Frivolous Arguments</h3>
+                    <p class="mb-4">Our business revolves around examining past and present cases, focusing on potential areas of GDPR breach, malpractice, over-billing, and abuse of power by firms and their representatives. We take decisive action by filing complaints and pursuing justice.</p>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Documentation of unjustified legal proceedings</li>
+                        <li>Analysis of excessive litigation</li>
+                        <li>Identification of procedural abuse</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3 class="text-xl font-bold mb-4 text-primary">Banks & Poor Advice</h3>
+                    <p class="mb-4">We're investigating cases where footballers believe they've received poor investment advice from their banks. Many players have been pressured into schemes that benefited the banks while being steered away from their own preferred investments.</p>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Review of investment recommendations</li>
+                        <li>Analysis of fee structures</li>
+                        <li>Investigation of mis-sold financial products</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3 class="text-xl font-bold mb-4 text-primary">False Headlines & Mental Health</h3>
+                    <p class="mb-4">We understand the devastating impact of misleading media coverage on athletes' mental health. Our team works to address false headlines and their consequences, ensuring athletes have a voice and avenue for redress.</p>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Documentation of false media narratives</li>
+                        <li>Support for affected athletes</li>
+                        <li>Legal action against defamatory content</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3 class="text-xl font-bold mb-4 text-primary">Impartiality & Justice</h3>
+                    <p class="mb-4">We actively file complaints against Solicitors, Barristers, and Judges who fail to uphold the rule of law. Our judicial system must maintain its integrity, and we ensure that any 'bad actors' are held accountable.</p>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Monitoring of judicial conduct</li>
+                        <li>Investigation of bias claims</li>
+                        <li>Documentation of procedural irregularities</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3 class="text-xl font-bold mb-4 text-primary">GDPR & Data Protection</h3>
+                    <p class="mb-4">We investigate potential breaches of data protection regulations, ensuring that athletes' personal information is handled with the care and security it deserves.</p>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Audit of data handling practices</li>
+                        <li>Investigation of unauthorized disclosures</li>
+                        <li>Review of consent procedures</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section section">
+            <h2>Get in Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h3>Emergency Support</h3>
+                    <p>24/7 assistance for urgent cases</p>
+                </div>
+                <div class="contact-card">
+                    <h3>Free Consultation</h3>
+                    <p>Initial case review at no cost</p>
+                </div>
+                <div class="contact-card">
+                    <h3>Confidential Support</h3>
+                    <p>Your privacy is our priority</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero animations
+        gsap.to('.hero h1', {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            delay: 0.5
+        });
+
+        gsap.to('.hero p', {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            delay: 0.8
+        });
+
+        // Scroll animations for sections
+        gsap.utils.toArray('.section').forEach(section => {
+            gsap.to(section, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: section,
+                    start: 'top 80%',
+                    end: 'top 20%',
+                    toggleActions: 'play none none reverse',
+                    onEnter: () => section.classList.add('active')
+                }
+            });
+        });
+
+        // Timeline animations
+        gsap.utils.toArray('.timeline-item').forEach((item, index) => {
+            gsap.from(item, {
+                opacity: 0,
+                x: index % 2 === 0 ? -50 : 50,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: item,
+                    start: 'top 80%',
+                    end: 'top 20%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        });
+
+        // Service card animations
+        gsap.utils.toArray('.service-card').forEach((card, index) => {
+            gsap.from(card, {
+                opacity: 0,
+                y: 30,
+                duration: 0.8,
+                delay: index * 0.2,
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 80%',
+                    end: 'top 20%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        });
+
+        // Stat box counter animations
+        gsap.utils.toArray('.stat-box').forEach((box) => {
+            const numberElement = box.querySelector('.stat-number');
+            const originalText = numberElement.textContent;
+            
+            // Special handling for the "£1bn" stat
+            if (originalText.includes('£')) {
+                gsap.from(numberElement, {
+                    textContent: "£0bn",
+                    duration: 2,
+                    ease: "power1.out",
+                    onUpdate: function() {
+                        const progress = this.progress();
+                        numberElement.textContent = `£${Math.floor(progress * 1)}bn`;
+                    },
+                    scrollTrigger: {
+                        trigger: box,
+                        start: 'top 80%',
+                        end: 'top 20%',
+                        toggleActions: 'play none none none'  // Changed to prevent reversal
+                    }
+                });
+            } else {
+                // Handle regular number stats
+                const finalValue = parseFloat(originalText);
+                gsap.from(numberElement, {
+                    textContent: 0,
+                    duration: 2,
+                    ease: "power1.out",
+                    snap: { textContent: 1 },
+                    onUpdate: function() {
+                        const progress = this.progress();
+                        numberElement.textContent = Math.floor(finalValue * progress);
+                    },
+                    scrollTrigger: {
+                        trigger: box,
+                        start: 'top 80%',
+                        end: 'top 20%',
+                        toggleActions: 'play none none none'  // Changed to prevent reversal
+                    }
+                });
+            }
+        });
+
+
+                // Focus Areas card animations
+                gsap.utils.toArray('#cases .card').forEach((card, index) => {
+                    gsap.from(card, {
+                        opacity: 0,
+                        y: 50,
+                        duration: 0.8,
+                        delay: index * 0.2,
+                        scrollTrigger: {
+                            trigger: card,
+                            start: 'top 85%',
+                            toggleActions: 'play none none reverse'
+                        }
+                    });
+                });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Interactive CTA button
+        /*const cta = document.querySelector('.cta');
+        cta.addEventListener('click', () => {
+            // Create modal dialog
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: white;
+                padding: 2rem;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                z-index: 1001;
+                max-width: 90%;
+                width: 400px;
+            `;
+            
+            modal.innerHTML = `
+                <h3 style="margin-bottom: 1rem;">Contact Us</h3>
+                <p style="margin-bottom: 1rem;">Thank you for reaching out. We're here to help.</p>
+                <p style="margin-bottom: 1rem;">Email: support@justicesport.com</p>
+                <p style="margin-bottom: 1.5rem;">Phone: +44 (0) 800 123 4567</p>
+                <button style="background: var(--accent); color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;">Close</button>
+            `;
+
+            // Create overlay
+            const overlay = document.createElement('div');
+            overlay.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0,0,0,0.5);
+                z-index: 1000;
+            `;
+
+            // Add to document
+            document.body.appendChild(overlay);
+            document.body.appendChild(modal);
+
+            // Close modal functionality
+            const closeModal = () => {
+                document.body.removeChild(modal);
+                document.body.removeChild(overlay);
+            };
+
+            modal.querySelector('button').addEventListener('click', closeModal);
+            overlay.addEventListener('click', closeModal);
+        });*/
+
+        // Add scroll-triggered progress bar
+        const progressBar = document.createElement('div');
+        progressBar.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--accent);
+            width: 0%;
+            z-index: 1002;
+            transition: width 0.2s ease;
+        `;
+        document.body.appendChild(progressBar);
+
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            progressBar.style.width = scrolled + '%';
+        });
+    </script>
+</body>
+</html>
