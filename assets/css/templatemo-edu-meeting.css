@@ -155,11 +155,15 @@ body {
   }
 }
 
+.main-button-red{
+  margin-bottom: 2em;
+}
+
 .main-button-red a {
-  font-size: 13px;
+  font-size: 16px;
   color: #fff;
   background-color: #a12c2f;
-  padding: 12px 30px;
+  padding: 24px 42px;
   display: inline-block;
   border-radius: 22px;
   font-weight: 500;
@@ -752,7 +756,7 @@ banner
   margin: 1.5em;
 }
 
-.main-banner .caption .main-button-red {
+.main-banner .caption {
   margin-top: 30px;
 }
 
@@ -1179,13 +1183,13 @@ section.upcoming-meetings .categories ul li a:hover {
   color: #a12c2f;
 }
 
-section.upcoming-meetings .categories .main-button-red {
+section.upcoming-meetings .categories  {
   border-top: 1px solid #eee;
   padding-top: 30px;
   margin-top: 15px;
 }
 
-section.upcoming-meetings .categories .main-button-red a {
+section.upcoming-meetings .categories  a {
   width: 100%;
   text-align: center;
 }
@@ -1282,14 +1286,15 @@ section.contact-us {
 }
 
 section.contact-us #contact {
-  background-color: #fff;
+  /* background-color: #fff; */
   border-radius: 20px;
   padding: 40px;
   width: 70%;
   margin-left: 15%;
-  margin-top: 70%;
 }
-
+section.contact-us #formholder {
+    height:33em
+}
 section.contact-us #contact h2 {
   text-transform: uppercase;
   color: #1f272b;
@@ -1501,11 +1506,11 @@ section.meetings-page .pagination ul li a {
   transition: all .3s;
 }
 
-section.meetings-page .main-button-red {
+section.meetings-page  {
   text-align: center;
 }
 
-section.meetings-page .main-button-red a {
+section.meetings-page  a {
   padding: 12px 60px;
   text-align: center;
   margin-top: 30px;
@@ -1725,7 +1730,7 @@ responsive
     font-size: 22px;
   }
 
-  .main-banner .caption .main-button-red {
+  .main-banner .caption {
     margin-top: 15px;
   }
 
