@@ -1764,6 +1764,9 @@ responsive
     margin-bottom: 30px;
     margin-top: 37em;
   }
+  section.contact-us #formholder {
+    height:35em
+  }
 
 }
 
@@ -1797,7 +1800,9 @@ responsive
     position: absolute;
     width: 100%;
   }
-
+  section.contact-us #formholder {
+    height:35em
+  }
   .main-banner .caption {
     position: absolute;
     top: 45%;
