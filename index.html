@@ -281,7 +281,6 @@ https://templatemo.com/tm-569-edu-meeting
               currentFactIndex = (currentFactIndex + 1) % footballFacts.length;
           }, 500);
       }
-  
       // Show first fact immediately
       showNextFact();
       // Change fact every 4 seconds
@@ -290,6 +289,9 @@ https://templatemo.com/tm-569-edu-meeting
         function showContent() {
             document.body.classList.add('loaded');
         }
+
+            // Add timeout as fallback
+      setTimeout(showContent, maxWaitTime);
     
         function checkAllLoaded() {
           if (videoLoaded && document.readyState === 'complete') {
