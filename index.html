@@ -33,12 +33,6 @@ https://templatemo.com/tm-569-edu-meeting
   </head>
 
 <body>
-  <div id="loading-screen" class="fixed inset-0 bg-black z-50 flex items-center justify-center">
-    <div class="loading-animation">
-        <i class="fas fa-futbol fa-3x"></i>
-        <div class="loading-text" id="fact-text"></div>
-    </div>
-  </div>
   <!-- ***** Header Area Start ***** -->
   <header class="header-area header-sticky">
       <div class="container">
@@ -253,71 +247,7 @@ https://templatemo.com/tm-569-edu-meeting
     <script src="assets/js/slick-slider.js"></script>
     <script src="assets/js/custom.js"></script>
     <script>
-      const footballFacts = [
-    "The first FIFA World Cup was held in Uruguay in 1930.",
-    "Pelé scored 1,279 goals in 1,363 games, a Guinness World Record.",
-    "The fastest goal in football history was scored in 2.1 seconds.",
-    "The Premier League record transfer fee is £107m for Enzo Fernandez.",
-    "Real Madrid has won the Champions League a record 14 times.",
-    "The longest football match lasted 3 days and 3 nights.",
-    "The heaviest defeat in football was 149-0.",
-    "The first football club was Sheffield FC, founded in 1857.",
-    "Over 3.5 billion people watched the 2018 World Cup.",
-    "Football was banned in England for nearly 300 years."
-];
 
-      document.addEventListener('DOMContentLoaded', function() {
-        const video = document.getElementById('bg-video');
-        let videoLoaded = false;
-        const factText = document.getElementById('fact-text');
-        let currentFactIndex = 0;
-        let maxWaitTime = 10000; // 5 seconds maximum wait time
-
-        function showNextFact() {
-          factText.style.opacity = '0';
-          setTimeout(() => {
-              factText.textContent = footballFacts[currentFactIndex];
-              factText.style.opacity = '1';
-              currentFactIndex = (currentFactIndex + 1) % footballFacts.length;
-          }, 500);
-      }
-      // Show first fact immediately
-      showNextFact();
-      // Change fact every 4 seconds
-      const factInterval = setInterval(showNextFact, 4000);
-        
-        function showContent() {
-            document.body.classList.add('loaded');
-        }
-
-            // Add timeout as fallback
-      setTimeout(showContent, maxWaitTime);
-    
-        function checkAllLoaded() {
-          if (videoLoaded && document.readyState === 'complete') {
-              clearInterval(factInterval);
-              document.body.classList.add('loaded');
-          }
-      }
-    
-        // Multiple video event listeners for better compatibility
-        video.addEventListener('loadeddata', function() {
-            videoLoaded = true;
-            checkAllLoaded();
-        });
-    
-        video.addEventListener('canplay', function() {
-            videoLoaded = true;
-            checkAllLoaded();
-        });
-    
-        video.addEventListener('playing', function() {
-            videoLoaded = true;
-            checkAllLoaded();
-        });
-    
-        window.addEventListener('load', checkAllLoaded);
-    });
         //according to loftblog tut
         $('.nav li:first').addClass('active');
 
