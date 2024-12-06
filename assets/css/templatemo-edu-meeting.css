@@ -1274,6 +1274,23 @@ section.upcoming-meetings .categories  a {
 contact us
 --------------------------------------------- 
 */
+.responsive-wrapper {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  padding-bottom: 50%; /* Adjust this value to control aspect ratio */
+  margin-bottom: 3em;
+}
+
+.responsive-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
 
 section.contact-us {
   background-image: url(../images/meetings-bg.jpg);
@@ -1768,6 +1785,24 @@ responsive
     height:38em
   }
 
+  .responsive-wrapper {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    padding-bottom: 50%; /* Adjust this value to control aspect ratio */
+    margin-bottom: 3em;
+  }
+  
+  .responsive-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
 }
 
 @media (max-width: 767px) {
@@ -1839,6 +1874,24 @@ responsive
     font-size: 14px;
     max-width: 570px;
     margin: 1.5em;
+  }
+
+  .responsive-wrapper {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    padding-bottom: 50%; /* Adjust this value to control aspect ratio */
+    margin-bottom: 3em;
+  }
+  
+  .responsive-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
   }
 
 }
