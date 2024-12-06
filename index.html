@@ -292,10 +292,11 @@ https://templatemo.com/tm-569-edu-meeting
         }
     
         function checkAllLoaded() {
-            if (videoLoaded && document.readyState === 'complete') {
-                showContent();
-            }
-        }
+          if (videoLoaded && document.readyState === 'complete') {
+              clearInterval(factInterval);
+              document.body.classList.add('loaded');
+          }
+      }
     
         // Multiple video event listeners for better compatibility
         video.addEventListener('loadeddata', function() {
