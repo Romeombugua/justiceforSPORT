@@ -24,6 +24,8 @@ Table of contents
 
 --------------------------------------------- */
 /* 
+
+
 ---------------------------------------------
 font & reset css
 --------------------------------------------- 
@@ -34,6 +36,76 @@ font & reset css
 reset
 --------------------------------------------- 
 */
+
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+}
+
+.loading-animation {
+  text-align: center;
+}
+
+.loading-animation i {
+  color: white;
+  animation: bounce 1s infinite ease-in-out;
+  margin-bottom: 20px;
+}
+
+.loading-text {
+  color: white;
+  font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+  max-width: 600px;
+  text-align: center;
+  margin-top: 20px;
+  line-height: 1.5;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+@keyframes bounce {
+  0%, 100% {
+      transform: translateY(0) rotate(0deg);
+  }
+  50% {
+      transform: translateY(-20px) rotate(180deg);
+  }
+}
+
+@keyframes fade {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+body.loaded #loading-screen {
+  opacity: 0;
+  pointer-events: none;
+}
+
+body:not(.loaded) > *:not(#loading-screen) {
+  visibility: hidden;
+}
+
+body.loaded > *:not(#loading-screen) {
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, div
 pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q,
 s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
