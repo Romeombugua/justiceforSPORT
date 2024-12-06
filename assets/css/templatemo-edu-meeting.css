@@ -1881,7 +1881,7 @@ responsive
     max-width: 1000px;
     margin: 0 auto;
     position: relative;
-    padding-bottom: 85%; /* Adjust this value to control aspect ratio */
+    padding-bottom: 95%; /* Adjust this value to control aspect ratio */
     margin-bottom: 3em;
   }
   
