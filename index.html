@@ -204,6 +204,44 @@ https://templatemo.com/tm-569-edu-meeting
 
   <section class="contact-us" id="contact">
     <div class="container" style="border:20px red ">
+      <div class="row">
+        <div class="">
+          <form id="contact" action="" method="post">
+            <div class="row">
+              <div class="col-lg-9">
+                <h2>Let's get in touch</h2>
+              </div>
+              <div class="col-lg-4">
+                <fieldset>
+                  <input name="name" type="text" id="name" placeholder="YOUR NAME...*">
+                </fieldset>
+              </div>
+              <div class="col-lg-4">
+                <fieldset>
+                <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="YOUR EMAIL...*">
+              </fieldset>
+              </div>
+              <div class="col-lg-4">
+                <fieldset>
+                  <input name="address" type="text" id="address" placeholder="ADDRESS...">
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <textarea name="message" type="text" class="form-control" id="message" placeholder="YOUR MESSAGE..."></textarea>
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <button type="submit" id="form-submit" class="button">SEND MESSAGE NOW</button>
+                </fieldset>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+</div>
+    <!--<div class="container" style="border:20px red ">
           <div>
             <div>
               <div id="formholder">
@@ -211,13 +249,13 @@ https://templatemo.com/tm-569-edu-meeting
               </div>
             </div>
           </div>
-    </div>
-    <div class="responsive-wrapper">
+    </div>-->
+    <!--<div class="responsive-wrapper">
       <iframe 
           src="https://docs.google.com/forms/d/e/1FAIpQLSdHe1BhF8jGErbb6MXfs8Ubfu7EERnIrupKzZf1fxq2nI5KPQ/viewform?embedded=true">
           Loading…
       </iframe>
-    </div>
+    </div>-->
     <div>
       <div class="main-button-red" style="text-align:center;">
         <div><a href="https://complaints.justiceforsport.com/">Get Help Now!</a></div>
@@ -328,6 +366,39 @@ document.addEventListener('DOMContentLoaded', function() {
   setTimeout(() => {
     typeEffect(paragraph, paragraphText, 30);
   }, headingText.length * 100 + 500); // Wait for heading to complete + 0.5s
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('contact');
+
+  form.addEventListener('submit', function(e) {
+      e.preventDefault(); // This prevents the form from submitting traditionally
+      
+      const formData = {
+          site: 'justiceforsport',
+          name: document.getElementById('name').value,
+          email: document.getElementById('email').value,
+          address: document.getElementById('address').value,
+          message: document.getElementById('message').value
+      };
+      
+      fetch('https://complaints.justiceforsport.com/contact/', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData)
+      })
+      .then(response => response.json())
+      .then(data => {
+          alert('Thank you for your message! We will get back to you soon.');
+          form.reset();
+      })
+      .catch(error => {
+          console.error('Error:', error);
+          alert('There was an error sending your message. Please try again.');
+      });
+  });
 });
     </script>
 </body>
