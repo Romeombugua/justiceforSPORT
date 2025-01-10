@@ -783,6 +783,11 @@ services
   border-radius: 10px;
 }
 
+.case-image{
+  border-radius: 10px;
+  height: 40vh;
+}
+
 #case1{
   /* background-image: url(../images/case1.jpg); */
   background-repeat: no-repeat;
