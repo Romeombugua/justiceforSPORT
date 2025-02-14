@@ -884,192 +884,7 @@ services
   height: 40vh;
 }
 
-#case1 {
-  /* background-image: url(../images/case1.jpg); */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  border-radius: 20px;
-  text-align: center;
-  color: #fff;
-  padding: 40px;
-}
 
-#case2 {
-  /* background-image: url(../images/case2.jpg); */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  border-radius: 20px;
-  text-align: center;
-  color: #fff;
-  padding: 40px;
-}
-
-#case3 {
-  /* background-image: url(../images/case3.jpg); */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  border-radius: 20px;
-  text-align: center;
-  color: #fff;
-  padding: 40px;
-}
-
-#case4 {
-  /* background-image: url(../images/case4.jpg); */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  border-radius: 20px;
-  text-align: center;
-  color: #fff;
-  padding: 40px;
-}
-
-#case5 {
-  /* background-image: url(../images/case5.jpg); */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  border-radius: 20px;
-  text-align: center;
-  color: #fff;
-  padding: 40px;
-}
-
-#case6 {
-  /* background-image: url(../images/case6.jpg); */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  border-radius: 20px;
-  text-align: center;
-  color: #fff;
-  padding: 40px;
-}
-
-#case7 {
-  /* background-image: url(../images/case6.jpg); */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  border-radius: 20px;
-  text-align: center;
-  color: #fff;
-  padding: 40px;
-}
-
-#case8 {
-  /* background-image: url(../images/case6.jpg); */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  border-radius: 20px;
-  text-align: center;
-  color: #fff;
-  padding: 40px;
-}
-
-#case9 {
-  /* background-image: url(../images/case6.jpg); */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  border-radius: 20px;
-  text-align: center;
-  color: #fff;
-  padding: 40px;
-}
-
-#case10 {
-  /* background-image: url(../images/case6.jpg); */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  border-radius: 20px;
-  text-align: center;
-  color: #fff;
-  padding: 40px;
-}
-
-#case11 {
-  /* background-image: url(../images/case6.jpg); */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  border-radius: 20px;
-  text-align: center;
-  color: #fff;
-  padding: 40px;
-}
-
-#case12 {
-  /* background-image: url(../images/case6.jpg); */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  border-radius: 20px;
-  text-align: center;
-  color: #fff;
-  padding: 40px;
-}
-
-#case13 {
-  /* background-image: url(../images/case6.jpg); */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  border-radius: 20px;
-  text-align: center;
-  color: #fff;
-  padding: 40px;
-}
-
-#case14 {
-  /* background-image: url(../images/case6.jpg); */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  border-radius: 20px;
-  text-align: center;
-  color: #fff;
-  padding: 40px;
-}
-
-#case15 {
-  /* background-image: url(../images/case6.jpg); */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  border-radius: 20px;
-  text-align: center;
-  color: #fff;
-  padding: 40px;
-}
-
-#case16 {
-  /* background-image: url(../images/case6.jpg); */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  border-radius: 20px;
-  text-align: center;
-  color: #fff;
-  padding: 40px;
-}
-
-#case17 {
-  /* background-image: url(../images/case6.jpg); */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  border-radius: 20px;
-  text-align: center;
-  color: #fff;
-  padding: 40px;
-}
 
 .services {
   margin-top: -250px;
@@ -1089,7 +904,7 @@ services
 }
 
 .services .item .icon {
-  max-width: 60px;
+  /* max-width: 60px; */
   margin: 0 auto;
 }
 
@@ -2031,22 +1846,84 @@ responsive
 }
 
 /* Media query for 21.5-inch iMac */
-@media (min-width: 1920px) {
+@media (max-width: 1920px) {
   section.contact-us #contact {
-    margin-top: 50em; /* Adjust this value as needed */
+    margin-top: 50vh; /* Adjust this value as needed */
   }
 }
 
 /* Media query for 24-inch iMac */
-@media (min-width: 2240px) {
+@media (max-width: 2240px) {
   section.contact-us #contact {
-    margin-top: 55em; /* Adjust this value as needed */
+    margin-top: 70vh; /* Adjust this value as needed */
   }
 }
 
 /* Media query for 27-inch iMac */
 @media (min-width: 2560px) {
   section.contact-us #contact {
-    margin-top: 60em; /* Adjust this value as needed */
+    margin-top: 20vh; /* Adjust this value as needed */
+  }
+  .case-image {
+    border-radius: 10px;
+    height: 25vh;
+  }
+  .services {
+    margin-top: -500px;
+    position: absolute;
+    width: 100%;
+  }
+  
+  .services .item {
+    /* background-image: url(../images/service-item-bg.jpg); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    border-radius: 20px;
+    text-align: center;
+    color: #fff;
+    padding: 40px;
+  }
+
+  .main-banner .caption {
+    position: absolute;
+    top: 35%;
+    transform: translateY(-50%);
+  }
+  
+  .main-banner .caption h6 {
+    margin-top: 10px;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 2px;
+  }
+  
+  .main-banner .caption h2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 36px;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 1px;
+  }
+  
+  .main-banner .caption h2 em {
+    font-style: normal;
+    color: #f5a425;
+    font-weight: 900;
+  }
+  
+  .main-banner .caption p {
+    color: #fff;
+    font-size: 16px;
+    max-width: 670px;
+    margin: 1.5em;
+  }
+  
+  .main-banner .caption {
+    margin-top: 30px;
   }
 }
